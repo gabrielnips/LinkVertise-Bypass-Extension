@@ -1,0 +1,47 @@
+{
+    "manifest_version": 2,
+    "name": "Linkvertise Bypasser",
+    "version": "1.2",
+    "author": "https://github.com/gabrielnips",
+    "icons": {
+        "16": "icon.png",
+        "48": "icon.png",
+        "128": "icon.png"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*.link-to.net/*",
+                "*://*.linkvertise.com/*",
+                "*://*.linkvertise.net/*"
+            ],
+            "exclude_globs": [
+                "*://blog.linkvertise.com",
+                "*://blog.linkvertise.com/*",
+                "https://linkvertise.com/",
+                "https://linkvertise.com/assets/vendor/*",
+                "https://linkvertise.com/assets/vendor/thinksuggest.html",
+                "https://publisher.linkvertise.com/*",
+                "*://linkvertise.com",
+                "*://linkvertise.com/search*",
+                "*://publisher.linkvertise.com/*"
+            ],
+            "externally_connectable": {
+                "matches": [
+                    "api.bypass.city",
+                    "cdn.jsdelivr.net",
+                    "publisher.linkvertise.com"
+                ]
+            },
+            "js": [
+                "content.js"
+            ]
+        }
+    ],
+    "permissions": [
+        "tabs",
+        "*://*.link-to.net/*",
+        "*://*.linkvertise.com/*",
+        "*://*.linkvertise.net/*"
+    ]
+}
