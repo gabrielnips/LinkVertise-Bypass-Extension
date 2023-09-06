@@ -3,10 +3,13 @@
     "name": "Linkvertise Bypasser",
     "version": "1.2",
     "author": "https://github.com/gabrielnips",
-    "icons": {
-        "16": "icon.png",
-        "48": "icon.png",
-        "128": "icon.png"
+    "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon.png",
+      "48": "icon.png",
+      "128": "icon.png"
+      }
     },
     "content_scripts": [
         {
@@ -40,8 +43,15 @@
     ],
     "permissions": [
         "tabs",
+        "storage",
         "*://*.link-to.net/*",
         "*://*.linkvertise.com/*",
         "*://*.linkvertise.net/*"
-    ]
+    ],
+ "content_security_policy": "script-src 'self' https://cdnjs.cloudflare.com; object-src 'self'",
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  }
 }

@@ -12,11 +12,13 @@ document.head.appendChild(jQueryScript2);
 
 (async function () {
 
-    var redirectCoolDown = 0;
+    chrome.storage.sync.get(['cooldown'], function(result) {
+    const redirectCoolDown = result.cooldown || 0;
+
     // change 0 to any number and the script will wait that much time in seconds before redirecting
 
 
-    await sleep(redirectCoolDown * 1000)
+    sleep(redirectCoolDown * 1000)
 
 
     // change false to true if you want notifications
@@ -54,7 +56,7 @@ document.head.appendChild(jQueryScript2);
             new Notify({
                 status: 'warning',
                 title: 'Redirecting to discord server in 10 seconds',
-                text: 'If you dont get redirected then go to this link: https://discord.gg/uMEtrpRvAf',
+                text: 'I',
                 effect: 'slide',
                 speed: 300,
                 customClass: '',
@@ -70,7 +72,6 @@ document.head.appendChild(jQueryScript2);
             })
         }
         await sleep(10000)
-        window.location.replace("https://discord.gg/uMEtrpRvAf")
     }
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
@@ -314,4 +315,5 @@ document.head.appendChild(jQueryScript2);
             oReq.send();
         }
     }
+    })
 })();
